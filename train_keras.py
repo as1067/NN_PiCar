@@ -23,7 +23,7 @@ for i in [2]:
         if success:
             # print(image)
             image = cv2.resize(image,(80,60))
-            image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+            # image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
             image = np.expand_dims(image,2)
             # print(image.shape)
             image = np.true_divide(image,255)
@@ -56,7 +56,7 @@ y = steering
 batch_size = 100
 dropout = .4
 model = Sequential()
-model.add(l.Conv2D(256,activation="relu",kernel_size=(3,3),input_shape=(10,60,80,1),data_format="channels_last"))
+model.add(l.Conv2D(256,activation="relu",kernel_size=(3,3),input_shape=(60,80,1),data_format="channels_last"))
 model.add(l.Conv2D(128,activation="relu",kernel_size=(3,3),data_format="channels_last"))
 model.add(l.Conv2D(64,activation="relu",kernel_size=(3,3),data_format="channels_last"))
 model.add(l.Reshape((60,80)))
