@@ -3,6 +3,7 @@ from keras import Model,Sequential
 import keras.layers as l
 import csv
 import numpy as np
+import keras
 from random import sample
 from keras.optimizers import Adam
 
@@ -55,19 +56,20 @@ steering = np.asarray(steering)
 #Neural Network Setup
 batch_size = 100
 dropout = .4
-model = Sequential()
-model.add(l.Conv2D(256,activation="relu",kernel_size=(3,3),input_shape=(60,80,1),data_format="channels_last"))
-model.add(l.Conv2D(128,activation="relu",kernel_size=(3,3),data_format="channels_last"))
-model.add(l.Conv2D(64,activation="relu",kernel_size=(3,3),data_format="channels_last"))
-model.add(l.Flatten())
-model.add(l.Dense(100,activation="relu"))
-model.add(l.Dropout(dropout))
-model.add(l.BatchNormalization())
-model.add(l.Dense(50,activation="relu"))
-model.add(l.Dropout(dropout))
-model.add(l.BatchNormalization())
-model.add(l.Dense(1,activation="relu"))
-model.compile(optimizer=Adam(),loss="mean_squared_logarithmic_error")
+# model = Sequential()
+# model.add(l.Conv2D(256,activation="relu",kernel_size=(3,3),input_shape=(60,80,1),data_format="channels_last"))
+# model.add(l.Conv2D(128,activation="relu",kernel_size=(3,3),data_format="channels_last"))
+# model.add(l.Conv2D(64,activation="relu",kernel_size=(3,3),data_format="channels_last"))
+# model.add(l.Flatten())
+# model.add(l.Dense(100,activation="relu"))
+# model.add(l.Dropout(dropout))
+# model.add(l.BatchNormalization())
+# model.add(l.Dense(50,activation="relu"))
+# model.add(l.Dropout(dropout))
+# model.add(l.BatchNormalization())
+# model.add(l.Dense(1,activation="relu"))
+# model.compile(optimizer=Adam(),loss="mean_squared_logarithmic_error")
+model = keras.models.load_model("checkpoint/model_0.h5")
 
 #Neural Network Training
 print("starting training")
