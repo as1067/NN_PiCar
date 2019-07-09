@@ -3,10 +3,10 @@ import numpy as np
 import csv
 import keras
 import time
-i = 3
-j = 7
+i = 2
+j = 9
 steering = []
-vidcap = cv2.VideoCapture("output" + str(i) + ".avi")
+vidcap = cv2.VideoCapture("models/edge" + str(i) + ".avi")
 with open("output" + str(i) + ".csv") as f:
     reader = csv.reader(f,delimiter=",")
     for row in reader:
