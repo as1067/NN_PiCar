@@ -1,0 +1,10 @@
+# Auto detect text files and perform LF normalization
+* text=auto
+output8.avi filter=lfs diff=lfs merge=lfs -text
+output9.avi filter=lfs diff=lfs merge=lfs -text
+output2.avi filter=lfs diff=lfs merge=lfs -text
+output3.avi filter=lfs diff=lfs merge=lfs -text
+output4.avi filter=lfs diff=lfs merge=lfs -text
+output5.avi filter=lfs diff=lfs merge=lfs -text
+output6.avi filter=lfs diff=lfs merge=lfs -text
+output7.avi filter=lfs diff=lfs merge=lfs -text
