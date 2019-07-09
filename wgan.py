@@ -112,8 +112,10 @@ def make_generator():
     """Creates a generator model that takes a 100-dimensional noise vector as a "seed",
     and outputs images of size 28x28x1."""
     model = Sequential()
-    model.add(Dense(1024, input_dim=100,activation="relu"))
-    model.add(Dense(128 * 20 * 15,activation="relu"))
+    model.add(Dense(1024, input_dim=100))
+    model.add(LeakyReLU())
+    model.add(Dense(128 * 20 * 15))
+    model.add(LeakyReLU())
     model.add(BatchNormalization())
     if image_data_format == 'channels_first':
         model.add(Reshape((128, 20, 15), input_shape=(128 * 15 * 20,)))
@@ -121,16 +123,19 @@ def make_generator():
     else:
         model.add(Reshape((15, 20, 128), input_shape=(128 * 15 * 20,)))
         bn_axis = -1
-    model.add(Conv2DTranspose(128, (5, 5), strides=2, padding='same',activation="relu"))
+    model.add(Conv2DTranspose(128, (5, 5), strides=2, padding='same'))
+    model.add(LeakyReLU())
     model.add(BatchNormalization(axis=bn_axis))
-    model.add(Convolution2D(64, (5, 5), padding='same',activation="relu"))
+    model.add(Convolution2D(64, (5, 5), padding='same'))
+    model.add(LeakyReLU())
     model.add(BatchNormalization(axis=bn_axis))
-    model.add(Conv2DTranspose(64, (5, 5), strides=2, padding='same',activation="relu"))
+    model.add(Conv2DTranspose(64, (5, 5), strides=2, padding='same'))
+    model.add(LeakyReLU())
     model.add(BatchNormalization(axis=bn_axis))
     # Because we normalized training inputs to lie in the range [-1, 1],
     # the tanh function should be used for the output of the generator to ensure
     # its output also lies in this range.
-    model.add(Convolution2D(1, (5, 5), padding='same', activation='sigmoid'))
+    model.add(Convolution2D(1, (5, 5), padding='same', activation='tanh'))
     # model.summary()
     return model
 
@@ -148,14 +153,18 @@ def make_discriminator():
     if image_data_format == 'channels_first':
         model.add(Convolution2D(64, (5, 5), padding='same', input_shape=(1, 60, 80)))
     else:
-        model.add(Convolution2D(64, (5, 5), padding='same', input_shape=(60, 80, 1),activation="relu"))
+        model.add(Convolution2D(64, (5, 5), padding='same', input_shape=(60, 80, 1)))
+    model.add(LeakyReLU())
     model.add(Convolution2D(128, (5, 5), kernel_initializer='he_normal',
-                            strides=[2, 2],activation="relu"))
+                            strides=[2, 2]))
+    model.add(LeakyReLU())
     model.add(Convolution2D(128, (5, 5), kernel_initializer='he_normal', padding='same',
-                            strides=[2, 2],activation="relu"))
+                            strides=[2, 2]))
+    model.add(LeakyReLU())
     model.add(Flatten())
-    model.add(Dense(1024, kernel_initializer='he_normal',activation="relu"))
-    model.add(Dense(1, kernel_initializer='he_normal',activation="relu"))
+    model.add(Dense(1024, kernel_initializer='he_normal'))
+    model.add(LeakyReLU())
+    model.add(Dense(1, kernel_initializer='he_normal',activation="tanh"))
     return model
 
 
@@ -184,7 +193,7 @@ def generate_images(generator_model, output_dir, epoch):
     """Feeds random seeds into the generator and tiles and saves the output to a PNG
     file."""
     test_image_stack = generator_model.predict(np.random.rand(10, 100))
-    test_image_stack = (test_image_stack * 255)
+    test_image_stack = (test_image_stack * 127.5)+127.5
     print(test_image_stack.shape)
     print(test_image_stack[0][0])
     test_image_stack = np.squeeze(np.round(test_image_stack).astype(np.uint8))
@@ -223,7 +232,8 @@ for i in range(2,10):
             image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
             image = np.expand_dims(image,2)
             # print(image.shape)
-            image = np.true_divide(image,255)
+            images = images - 127.5
+            image = np.true_divide(image,127.5)
             images.append(image)
 X_train = np.asarray(images)
 
