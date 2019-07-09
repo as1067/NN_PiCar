@@ -69,11 +69,11 @@ dropout = .4
 # model.add(l.BatchNormalization())
 # model.add(l.Dense(1,activation="relu"))
 # model.compile(optimizer=Adam(),loss="mean_squared_logarithmic_error")
-model = keras.models.load_model("checkpoint/model_1.h5")
+model = keras.models.load_model("checkpoint/model_0.h5")
 
 #Neural Network Training
 print("starting training")
 model.fit(images,steering,batch_size=batch_size,epochs=10,validation_split=.3)
-model.save("checkpoint/model_0.h5")
+model.save("checkpoint/model_1.h5")
 
 
