@@ -25,11 +25,8 @@ for i in range(2,10):
     steering = []
     with open("output"+str(i)+".csv") as steer:
         reader = csv.reader(steer,delimiter=",")
-        count = 0
         for row in reader:
-            if not count == 0:
-                steering.append(int(row[2]))
-            count+=1
+            steering.append(int(row[2]))
 images = np.asarray(images)
 steering = np.asarray(steering)
 # ids = []
