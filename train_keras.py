@@ -53,7 +53,7 @@ steering = np.asarray(steering)
 # valy = np.asarray(valy)
 
 #Neural Network Setup
-batch_size = 2
+batch_size = 100
 dropout = .4
 model = Sequential()
 model.add(l.Conv2D(256,activation="relu",kernel_size=(3,3),input_shape=(60,80,1),data_format="channels_last"))
