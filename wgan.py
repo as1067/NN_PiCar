@@ -329,7 +329,7 @@ positive_y = np.ones((BATCH_SIZE, 1), dtype=np.float32)
 negative_y = -positive_y
 dummy_y = np.zeros((BATCH_SIZE, 1), dtype=np.float32)
 
-for epoch in range(100):
+for epoch in range(10000):
     np.random.shuffle(X_train)
     print("Epoch: ", epoch)
     print("Number of batches: ", int(X_train.shape[0] // BATCH_SIZE))
@@ -352,3 +352,6 @@ for epoch in range(100):
     # Still needs some code to display losses from the generator and discriminator,
     # progress bars, etc.
     generate_images(generator, args.output_dir, epoch)
+    if epoch%100==0:
+        generator_model.save("models/GAN_G"+str(epoch)+".h5")
+        discriminator_model.save("models/GAN_D"+str(epoch)+".h5")
