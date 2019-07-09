@@ -11,7 +11,7 @@ import sys
 # Data preprocessing
 steering = []
 images = []
-for i in range(2,10):
+for i in [2]:
     vidcap = cv2.VideoCapture("output"+str(i)+".avi")
     print("preparing data")
     success = True
@@ -31,20 +31,21 @@ for i in range(2,10):
                 steering.append(int(row[2]))
 images = np.asarray(images)
 steering = np.asarray(steering)
-
-ids = []
-for i in range(images.shape[0]):
-    ids.append(i)
-ids = sample(ids,images.shape[0])
-print(ids)
-sys.exit()
-x = []
-y=[]
-for i in ids:
-    x.append(images[i])
-    y.append(steering[i])
-x = np.asarray(x)
-y = np.asarray(y)
+x = images
+y = steering
+# ids = []
+# for i in range(images.shape[0]):
+#     ids.append(i)
+# ids = sample(ids,images.shape[0])
+# print(ids)
+# sys.exit()
+# x = []
+# y=[]
+# for i in ids:
+#     x.append(images[i])
+#     y.append(steering[i])
+# x = np.asarray(x)
+# y = np.asarray(y)
 
 #Neural Network Setup
 batch_size = 100
