@@ -59,7 +59,6 @@ dropout = .4
 model = Sequential()
 model.add(l.Conv2D(256,activation="relu",kernel_size=(3,3),input_shape=(60,80,1),data_format="channels_last"))
 model.add(l.Conv2D(128,activation="relu",kernel_size=(3,3),data_format="channels_last"))
-model.add(l.Conv2D(64,activation="relu",kernel_size=(3,3),data_format="channels_last"))
 model.add(l.Flatten())
 model.add(l.Dense(100,activation="relu"))
 model.add(l.Dropout(dropout))
@@ -74,6 +73,6 @@ model.compile(optimizer=Adam(),loss="mean_squared_logarithmic_error")
 #Neural Network Training
 print("starting training")
 model.fit(images,steering,batch_size=batch_size,epochs=20,validation_split=.3)
-model.save("checkpoint/model_1.h5")
+model.save("checkpoint/model_2.h5")
 
 
