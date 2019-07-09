@@ -232,7 +232,7 @@ for i in range(2,10):
             image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
             image = np.expand_dims(image,2)
             # print(image.shape)
-            images = images - 127.5
+            images=np.subtract(images,127.5)
             image = np.true_divide(image,127.5)
             images.append(image)
 X_train = np.asarray(images)
