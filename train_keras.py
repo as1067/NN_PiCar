@@ -70,6 +70,6 @@ model.compile(optimizer=Adam(),loss="mean_squared_logarithmic_error")
 #Neural Network Training
 print("starting training")
 model.fit(images,steering,batch_size=batch_size,epochs=20,validation_split=.3)
-model.save("checkpoint/model_2.h5")
+model.save("checkpoint/model_3.h5")
 
 
