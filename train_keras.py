@@ -7,11 +7,12 @@ from random import sample
 from keras.optimizers import Adam
 
 # Data preprocessing
+steering = []
+images = []
 for i in range(2,10):
     vidcap = cv2.VideoCapture("output"+str(i)+".avi")
     print("preparing data")
     success = True
-    images = []
     while success:
         success, image = vidcap.read()
         if success:
@@ -22,7 +23,6 @@ for i in range(2,10):
             # print(image.shape)
             image = np.true_divide(image,255)
             images.append(image)
-    steering = []
     with open("output"+str(i)+".csv") as steer:
         reader = csv.reader(steer,delimiter=",")
         for row in reader:
