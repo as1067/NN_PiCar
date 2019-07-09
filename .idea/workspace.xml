@@ -2,11 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="725db2f6-c724-4837-8332-36000ca5e841" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/output2.csv" beforeDir="false" afterPath="$PROJECT_DIR$/output2.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output3.csv" beforeDir="false" afterPath="$PROJECT_DIR$/output3.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output5.csv" beforeDir="false" afterPath="$PROJECT_DIR$/output5.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output6.csv" beforeDir="false" afterPath="$PROJECT_DIR$/output6.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output8.csv" beforeDir="false" afterPath="$PROJECT_DIR$/output8.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/train_keras.py" beforeDir="false" afterPath="$PROJECT_DIR$/train_keras.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -32,8 +27,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/train_keras.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="29" column="27" lean-forward="true" selection-start-line="29" selection-start-column="27" selection-end-line="29" selection-end-column="27" />
+            <state relative-caret-position="326">
+              <caret line="22" column="37" lean-forward="true" selection-start-line="22" selection-start-column="37" selection-end-line="22" selection-end-column="37" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -193,12 +188,12 @@
       <option name="presentableId" value="Default" />
       <updated>1562631583622</updated>
       <workItem from="1562631588745" duration="1660000" />
-      <workItem from="1562637690662" duration="321000" />
+      <workItem from="1562637690662" duration="389000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1981000" />
+    <option name="totallyTimeSpent" value="2049000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="6" />
@@ -239,16 +234,6 @@
     <entry file="file://$PROJECT_DIR$/1output7.csv" />
     <entry file="file://$PROJECT_DIR$/1output4.csv" />
     <entry file="file://$PROJECT_DIR$/1output9.csv" />
-    <entry file="file://$PROJECT_DIR$/fix_data.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" selection-start-line="21" selection-end-line="21" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitattributes">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
@@ -281,10 +266,20 @@
     <entry file="file://$PROJECT_DIR$/output3.csv">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/fix_data.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" selection-start-line="21" selection-end-line="21" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/train_keras.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="29" column="27" lean-forward="true" selection-start-line="29" selection-start-column="27" selection-end-line="29" selection-end-column="27" />
+        <state relative-caret-position="326">
+          <caret line="22" column="37" lean-forward="true" selection-start-line="22" selection-start-column="37" selection-end-line="22" selection-end-column="37" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>
