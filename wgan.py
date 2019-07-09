@@ -47,7 +47,7 @@ BATCH_SIZE = 64
 # per generator update. The paper uses 5.
 TRAINING_RATIO = 5
 GRADIENT_PENALTY_WEIGHT = 10  # As per the paper
-
+epsilon = 1e-4
 
 def wasserstein_loss(y_true, y_pred):
     """Calculates the Wasserstein loss for a sample batch.
@@ -153,18 +153,19 @@ def make_discriminator():
     if image_data_format == 'channels_first':
         model.add(Convolution2D(64, (5, 5), padding='same', input_shape=(1, 60, 80)))
     else:
-        model.add(Convolution2D(64, (5, 5), padding='same', input_shape=(60, 80, 1)))
+        model.add(Convolution2D(64, (3, 3), padding='same', input_shape=(60, 80, 1)))
     model.add(LeakyReLU())
-    model.add(Convolution2D(128, (5, 5), kernel_initializer='he_normal',
+    model.add(Convolution2D(128, (3, 3), kernel_initializer='he_normal',
                             strides=[2, 2]))
     model.add(LeakyReLU())
-    model.add(Convolution2D(128, (5, 5), kernel_initializer='he_normal', padding='same',
+    model.add(Convolution2D(128, (3, 3), kernel_initializer='he_normal', padding='same',
                             strides=[2, 2]))
     model.add(LeakyReLU())
     model.add(Flatten())
     model.add(Dense(1024, kernel_initializer='he_normal'))
     model.add(LeakyReLU())
-    model.add(Dense(1, kernel_initializer='he_normal',activation="tanh"))
+    model.add(Dense(1, kernel_initializer='he_normal'))
+    model.add(LeakyReLU())
     return model
 
 
@@ -234,6 +235,8 @@ for i in range(2,10):
             # print(image.shape)
             image=np.subtract(image,127.5)
             image = np.true_divide(image,127.5)
+            image = np.add(image,epsilon)
+            # print(image)
             images.append(image)
 X_train = np.asarray(images)
 
