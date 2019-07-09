@@ -195,8 +195,8 @@ def generate_images(generator_model, output_dir, epoch):
     file."""
     test_image_stack = generator_model.predict(np.random.rand(10, 100))
     test_image_stack = (test_image_stack * 127.5)+127.5
-    print(test_image_stack.shape)
-    print(test_image_stack[0][0])
+    # print(test_image_stack.shape)
+    # print(test_image_stack[0][0])
     test_image_stack = np.squeeze(np.round(test_image_stack).astype(np.uint8))
     tiled_output = tile_images(test_image_stack)
     tiled_output = Image.fromarray(tiled_output, mode='L')  # L specifies greyscale
