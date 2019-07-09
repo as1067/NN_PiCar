@@ -31,6 +31,18 @@ for i in range(2,10):
 images = np.asarray(images)
 steering = np.asarray(steering)
 
+ids = []
+for i in range(images.shape[0]):
+    ids.append(i)
+ids = sample(ids,images.shape[0])
+x = []
+y=[]
+for i in ids:
+    x.append(images[i])
+    y.append(steering[i])
+x = np.asarray(x)
+y = np.asarray(y)
+
 #Neural Network Setup
 batch_size = 100
 dropout = .4
@@ -51,7 +63,7 @@ model.compile(optimizer=Adam(),loss="mean_squared_error")
 
 #Neural Network Training
 print("starting training")
-model.fit(images,steering,batch_size=batch_size,epochs=20,validation_split=.3)
+model.fit(x,y,batch_size=batch_size,epochs=20,validation_split=.3)
 model.save("checkpoint/model_7.h5")
 
 
