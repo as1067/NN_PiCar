@@ -4,7 +4,7 @@ import csv
 import keras
 import time
 i = 3
-j = 1
+j = 7
 steering = []
 vidcap = cv2.VideoCapture("output" + str(i) + ".avi")
 with open("output" + str(i) + ".csv") as f:
