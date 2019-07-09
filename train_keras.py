@@ -16,9 +16,9 @@ for i in [2]:
     vidcap = cv2.VideoCapture("models/edge"+str(i)+".avi")
     print("preparing data")
     count = 0
-    i = 0
+    # i = 0
     success = True
-    while success and i<5641:
+    while success:
         success, image = vidcap.read()
         if success:
             # print(image)
@@ -27,16 +27,13 @@ for i in [2]:
             image = np.expand_dims(image,2)
             # print(image.shape)
             image = np.true_divide(image,255)
-            cells.append(image)
-            if count%10 == 0:
-                cells = np.asarray(cells)
-                images.append(cells)
-                cells =[]
+            images.append(image)
 
     with open("output"+str(i)+".csv") as steer:
         reader = csv.reader(steer,delimiter=",")
         for row in reader:
                 steering.append(int(row[2]))
+
 images = np.asarray(images)
 steering = np.asarray(steering)
 x = images
