@@ -12,18 +12,20 @@ for i in ids:
         if success:
             frames += 1
     print(frames)
-    f = open("output"+str(i)+".csv","r")
-    w = open("1output"+str(i)+".csv","w")
+    f = open("output"+str(i)+"old.csv","r")
+    w = open("output"+str(i)+".csv","w")
     f.readline()
     count = 0
     for row in f:
         count+=1
     print(count)
     dif = count-frames-1
+    print(dif)
     count = 0
-    f = open("output"+str(i)+".csv","r")
+    f = open("output"+str(i)+"old.csv","r")
     for row in f:
-        if count<frames and count>dif:
+        if count>dif:
+            # print(str(count)+'\t'+str(dif))
             w.write(row)
         count+=1
 
