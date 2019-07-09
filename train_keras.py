@@ -30,35 +30,13 @@ for i in range(2,10):
                 steering.append(int(row[2]))
 images = np.asarray(images)
 steering = np.asarray(steering)
-# ids = []
-# for i in range(5570):
-#     ids.append(i)
-# traini = sample(ids,4000)
-# vali = []
-# for i in ids:
-#     if not i in traini:
-#         vali.append(i)
-# trainx = []
-# trainy = []
-# valx = []
-# valy = []
-# for i in traini:
-#     trainx.append(images[i])
-#     trainy.append(steering[i])
-# for i in vali:
-#     valx.append(images[i])
-#     valy.append(steering[i])
-# trainx = np.asarray(trainx)
-# trainy = np.asarray(trainy)
-# valx = np.asarray(valx)
-# valy = np.asarray(valy)
 
 #Neural Network Setup
 batch_size = 100
 dropout = .4
 model = Sequential()
-model.add(l.Conv2D(256,activation="relu",kernel_size=(3,3),input_shape=(60,80,1),data_format="channels_last"))
-model.add(l.Conv2D(128,activation="relu",kernel_size=(3,3),data_format="channels_last"))
+model.add(l.Conv2D(128,activation="relu",kernel_size=(3,3),input_shape=(60,80,1),data_format="channels_last"))
+model.add(l.Conv2D(64,activation="relu",kernel_size=(3,3),data_format="channels_last"))
 model.add(l.Flatten())
 model.add(l.Dense(100,activation="relu"))
 model.add(l.Dropout(dropout))
@@ -70,6 +48,6 @@ model.compile(optimizer=Adam(),loss="mean_squared_logarithmic_error")
 #Neural Network Training
 print("starting training")
 model.fit(images,steering,batch_size=batch_size,epochs=20,validation_split=.3)
-model.save("checkpoint/model_3.h5")
+model.save("checkpoint/model_4.h5")
 
 
