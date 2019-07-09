@@ -1,7 +1,7 @@
 import cv2
 import csv
 
-ids = [4,7,9]
+ids = [4]
 
 for i in ids:
     vidcap = cv2.VideoCapture("output"+str(i)+".avi")
@@ -12,10 +12,14 @@ for i in ids:
         if success:
             frames += 1
     print(frames)
-    f = open("output"+str(i)+".csv","r")
+    f = open("output"+str(i)+"old.csv","r")
     w = open("1output"+str(i)+".csv","w")
     f.readline()
-    for i in range(frames):
-        w.write(f.readline())
+    count = 0
+    for row in f:
+        if count<frames:
+            print(count)
+            w.write(row)
+        count+=1
 
 
