@@ -11,11 +11,14 @@ import sys
 # Data preprocessing
 steering = []
 images = []
+cells = []
 for i in [2]:
-    vidcap = cv2.VideoCapture("output"+str(i)+".avi")
+    vidcap = cv2.VideoCapture("edge"+str(i)+".avi")
     print("preparing data")
+    count = 0
+    i = 0
     success = True
-    while success:
+    while success and i<5641:
         success, image = vidcap.read()
         if success:
             # print(image)
@@ -24,7 +27,12 @@ for i in [2]:
             image = np.expand_dims(image,2)
             # print(image.shape)
             image = np.true_divide(image,255)
-            images.append(image)
+            cells.append(image)
+            if count%10 == 0:
+                cells = np.asarray(cells)
+                images.append(cells)
+                cells =[]
+
     with open("output"+str(i)+".csv") as steer:
         reader = csv.reader(steer,delimiter=",")
         for row in reader:
@@ -51,11 +59,11 @@ y = steering
 batch_size = 100
 dropout = .4
 model = Sequential()
-model.add(l.Conv2D(256,activation="relu",kernel_size=(3,3),input_shape=(60,80,1),data_format="channels_last"))
+model.add(l.Conv2D(256,activation="relu",kernel_size=(3,3),input_shape=(10,60,80,1),data_format="channels_last"))
 model.add(l.Conv2D(128,activation="relu",kernel_size=(3,3),data_format="channels_last"))
 model.add(l.Conv2D(64,activation="relu",kernel_size=(3,3),data_format="channels_last"))
 model.add(l.Reshape((60,80)))
-model.add(l.SimpleRNN(100,activation="relu",dropout=dropout,recurrent_dropout=dropout))
+# model.add(l.SimpleRNN(100,activation="relu",dropout=dropout,recurrent_dropout=dropout))
 model.add(l.Dense(100,activation="relu"))
 model.add(l.Dropout(dropout))
 model.add(l.BatchNormalization())
@@ -69,6 +77,6 @@ model.compile(optimizer=Adam(),loss="mean_squared_error")
 #Neural Network Training
 print("starting training")
 model.fit(x,y,batch_size=batch_size,epochs=20,validation_split=.3)
-model.save("checkpoint/model_8.h5")
+model.save("checkpoint/model_9.h5")
 
 
