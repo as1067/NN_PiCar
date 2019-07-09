@@ -23,7 +23,7 @@ for i in [2]:
         if success:
             # print(image)
             image = cv2.resize(image,(80,60))
-            # image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+            image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
             image = np.expand_dims(image,2)
             # print(image.shape)
             image = np.true_divide(image,255)
