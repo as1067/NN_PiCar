@@ -349,7 +349,7 @@ for epoch in range(10000):
         generator_loss.append(generator_model.train_on_batch(np.random.rand(BATCH_SIZE,
                                                                             100),
                                                              positive_y))
-    print(str(np.mean(discriminator_model))+"\t"+str(np.mean(generator_loss)+"\n"))
+    print(str(np.mean(discriminator_loss))+"\t"+str(np.mean(generator_loss)+"\n"))
     # Still needs some code to display losses from the generator and discriminator,
     # progress bars, etc.
     generate_images(generator, args.output_dir, epoch)
