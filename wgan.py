@@ -34,7 +34,7 @@ from keras.datasets import mnist
 from keras import backend as K
 from functools import partial
 import cv2
-
+image_data_format = "channels_last"
 try:
     from PIL import Image
 except ImportError:
@@ -115,7 +115,7 @@ def make_generator():
     model.add(Dense(1024, input_dim=100,activation="relu"))
     model.add(Dense(128 * 20 * 15,activation="relu"))
     model.add(BatchNormalization())
-    if K.image_data_format() == 'channels_first':
+    if image_data_format == 'channels_first':
         model.add(Reshape((128, 20, 15), input_shape=(128 * 15 * 20,)))
         bn_axis = 1
     else:
@@ -145,7 +145,7 @@ def make_discriminator():
     Note that the improved WGAN paper suggests that BatchNormalization should not be
     used in the discriminator."""
     model = Sequential()
-    if K.image_data_format() == 'channels_first':
+    if image_data_format == 'channels_first':
         model.add(Convolution2D(64, (5, 5), padding='same', input_shape=(1, 60, 80)))
     else:
         model.add(Convolution2D(64, (5, 5), padding='same', input_shape=(60, 80, 1),activation="relu"))
@@ -203,7 +203,7 @@ args = parser.parse_args()
 # First we load the image data, reshape it and normalize it to the range [-1, 1]
 # (X_train, y_train), (X_test, y_test) = mnist.load_data()
 # X_train = np.concatenate((X_train, X_test), axis=0)
-if K.image_data_format() == 'channels_last':
+# if K.image_data_format() == 'channels_last':
 #     X_train = X_train.reshape((X_train.shape[0], 1, X_train.shape[1], X_train.shape[2]))
 # else:
 #     X_train = X_train.reshape((X_train.shape[0], X_train.shape[1], X_train.shape[2], 1))
