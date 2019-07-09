@@ -53,7 +53,7 @@ x = np.asarray(x)
 y = np.asarray(y)
 
 #Neural Network Setup
-batch_size = 100
+batch_size = 50
 dropout = .4
 model = Sequential()
 model.add(l.Conv2D(256,activation="relu",kernel_size=(3,3),input_shape=(60,80,1),data_format="channels_last"))
@@ -74,7 +74,7 @@ model.compile(optimizer=Adam(),loss="mean_squared_error")
 
 #Neural Network Training
 print("starting training")
-model.fit(x,y,batch_size=batch_size,epochs=50,validation_split=.3)
+model.fit(x,y,batch_size=batch_size,epochs=20,validation_split=.3)
 model.save("checkpoint/model_9.h5")
 
 
