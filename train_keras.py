@@ -13,7 +13,7 @@ steering = []
 images = []
 cells = []
 for i in [2]:
-    vidcap = cv2.VideoCapture("edge"+str(i)+".avi")
+    vidcap = cv2.VideoCapture("models/edge"+str(i)+".avi")
     print("preparing data")
     count = 0
     i = 0
