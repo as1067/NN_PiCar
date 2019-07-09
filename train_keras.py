@@ -36,8 +36,8 @@ for i in [2]:
 
 images = np.asarray(images)
 steering = np.asarray(steering)
-x = images
-y = steering
+# x = images
+# y = steering
 # ids = []
 # for i in range(images.shape[0]):
 #     ids.append(i)
@@ -59,7 +59,7 @@ model = Sequential()
 model.add(l.Conv2D(256,activation="relu",kernel_size=(3,3),input_shape=(60,80,1),data_format="channels_last"))
 model.add(l.Conv2D(128,activation="relu",kernel_size=(3,3),data_format="channels_last"))
 model.add(l.Conv2D(64,activation="relu",kernel_size=(3,3),data_format="channels_last"))
-model.add(l.Reshape((60,80)))
+# model.add(l.Reshape((60,80)))
 # model.add(l.SimpleRNN(100,activation="relu",dropout=dropout,recurrent_dropout=dropout))
 model.add(l.Dense(100,activation="relu"))
 model.add(l.Dropout(dropout))
@@ -73,7 +73,7 @@ model.compile(optimizer=Adam(),loss="mean_squared_error")
 
 #Neural Network Training
 print("starting training")
-model.fit(x,y,batch_size=batch_size,epochs=20,validation_split=.3)
+model.fit(images,steering,batch_size=batch_size,epochs=20,validation_split=.3)
 model.save("checkpoint/model_9.h5")
 
 
