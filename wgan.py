@@ -203,7 +203,7 @@ args = parser.parse_args()
 # First we load the image data, reshape it and normalize it to the range [-1, 1]
 # (X_train, y_train), (X_test, y_test) = mnist.load_data()
 # X_train = np.concatenate((X_train, X_test), axis=0)
-# if K.image_data_format() == 'channels_first':
+if K.image_data_format() == 'channels_last':
 #     X_train = X_train.reshape((X_train.shape[0], 1, X_train.shape[1], X_train.shape[2]))
 # else:
 #     X_train = X_train.reshape((X_train.shape[0], X_train.shape[1], X_train.shape[2], 1))
