@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="725db2f6-c724-4837-8332-36000ca5e841" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/generator_summ.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/wgan.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wgan.py" beforeDir="false" afterPath="$PROJECT_DIR$/wgan.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -80,8 +77,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/wgan.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="321">
-              <caret line="226" lean-forward="true" selection-start-line="226" selection-end-line="226" />
+            <state relative-caret-position="310">
+              <caret line="191" column="56" lean-forward="true" selection-start-line="191" selection-start-column="56" selection-end-line="191" selection-end-column="56" />
               <folding>
                 <element signature="e#1223#1238#0" expanded="true" />
               </folding>
@@ -126,6 +123,7 @@
       <find>relu</find>
       <find>genera</find>
       <find>noise</find>
+      <find>batch_Si</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -350,12 +348,12 @@
       <workItem from="1562631588745" duration="1660000" />
       <workItem from="1562637690662" duration="2836000" />
       <workItem from="1562643877556" duration="12820000" />
-      <workItem from="1562707426121" duration="195000" />
+      <workItem from="1562707426121" duration="563000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17511000" />
+    <option name="totallyTimeSpent" value="17879000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -534,8 +532,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/wgan.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="321">
-          <caret line="226" lean-forward="true" selection-start-line="226" selection-end-line="226" />
+        <state relative-caret-position="310">
+          <caret line="191" column="56" lean-forward="true" selection-start-line="191" selection-start-column="56" selection-end-line="191" selection-end-column="56" />
           <folding>
             <element signature="e#1223#1238#0" expanded="true" />
           </folding>
