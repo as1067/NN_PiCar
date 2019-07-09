@@ -4,8 +4,8 @@ import glob
 import cv2
 cfg_cam_res = (320, 240)
 cfg_cam_fps = 30
-from scipy import ndimage as ndi
-from skimage import feature
+# from scipy import ndimage as ndi
+# from skimage import feature
 
 def auto_canny(image, sigma=0.33):
     # compute the median of the single channel pixel intensities
