@@ -32,8 +32,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/train_keras.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="76" column="46" selection-start-line="76" selection-start-column="46" selection-end-line="76" selection-end-column="46" />
+            <state relative-caret-position="361">
+              <caret line="76" column="45" selection-start-line="76" selection-start-column="45" selection-end-line="76" selection-end-column="45" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -304,12 +304,12 @@
       <updated>1562631583622</updated>
       <workItem from="1562631588745" duration="1660000" />
       <workItem from="1562637690662" duration="2836000" />
-      <workItem from="1562643877556" duration="9017000" />
+      <workItem from="1562643877556" duration="9154000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13513000" />
+    <option name="totallyTimeSpent" value="13650000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -468,8 +468,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/train_keras.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="76" column="46" selection-start-line="76" selection-start-column="46" selection-end-line="76" selection-end-column="46" />
+        <state relative-caret-position="361">
+          <caret line="76" column="45" selection-start-line="76" selection-start-column="45" selection-end-line="76" selection-end-column="45" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>
