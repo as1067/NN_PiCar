@@ -18,6 +18,8 @@ for i in range(2,10):
             # print(image)
             image = cv2.resize(image,(80,60))
             image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+            image = np.expand_dims(image,0)
+            print(image.shape)
             image = np.true_divide(image,255)
             images.append(image)
     steering = []
