@@ -19,6 +19,7 @@ you update Tensorflow to 1.1.0-rc1 or higher. I haven't tested this with Theano 
 The model saves images using pillow. If you don't have pillow, either install it or
 remove the calls to generate_images.
 """
+import sys
 import argparse
 import os
 import numpy as np
@@ -112,7 +113,7 @@ def make_generator():
     """Creates a generator model that takes a 100-dimensional noise vector as a "seed",
     and outputs images of size 28x28x1."""
     model = Sequential()
-    model.add(Dense(1024, input_dim=100))
+    model.add(Dense(2048, input_dim=100))
     model.add(LeakyReLU())
     model.add(Dense(128 * 20 * 15))
     model.add(LeakyReLU())
@@ -123,13 +124,13 @@ def make_generator():
     else:
         model.add(Reshape((15, 20, 128), input_shape=(128 * 15 * 20,)))
         bn_axis = -1
+    model.add(Conv2DTranspose(256, (5, 5), strides=2, padding='same'))
+    model.add(LeakyReLU())
+    model.add(BatchNormalization(axis=bn_axis))
+    model.add(Convolution2D(128, (5, 5), padding='same'))
+    model.add(LeakyReLU())
+    model.add(BatchNormalization(axis=bn_axis))
     model.add(Conv2DTranspose(128, (5, 5), strides=2, padding='same'))
-    model.add(LeakyReLU())
-    model.add(BatchNormalization(axis=bn_axis))
-    model.add(Convolution2D(64, (5, 5), padding='same'))
-    model.add(LeakyReLU())
-    model.add(BatchNormalization(axis=bn_axis))
-    model.add(Conv2DTranspose(64, (5, 5), strides=2, padding='same'))
     model.add(LeakyReLU())
     model.add(BatchNormalization(axis=bn_axis))
     # Because we normalized training inputs to lie in the range [-1, 1],
@@ -153,7 +154,7 @@ def make_discriminator():
     if image_data_format == 'channels_first':
         model.add(Convolution2D(64, (5, 5), padding='same', input_shape=(1, 60, 80)))
     else:
-        model.add(Convolution2D(64, (3, 3), padding='same', input_shape=(60, 80, 1)))
+        model.add(Convolution2D(256, (3, 3), padding='same', input_shape=(60, 80, 1)))
     model.add(LeakyReLU())
     model.add(Convolution2D(128, (3, 3), kernel_initializer='he_normal',
                             strides=[2, 2]))
@@ -219,6 +220,10 @@ args = parser.parse_args()
 #     X_train = X_train.reshape((X_train.shape[0], X_train.shape[1], X_train.shape[2], 1))
 # X_train = (X_train.astype(np.float32) - 127.5) / 127.5
 images = []
+cfg_cam_res = (80, 60)
+# cfg_cam_fps = 30
+# fourcc = cv2.VideoWriter_fourcc(*'XVID')
+# vidfile = cv2.VideoWriter("models/test.avi", fourcc, cfg_cam_fps, cfg_cam_res, 0)
 for i in range(2,10):
     vidcap = cv2.VideoCapture("models/edge"+str(i)+".avi")
     print("preparing data")
@@ -229,8 +234,9 @@ for i in range(2,10):
         success, image = vidcap.read()
         if success:
             # print(image)
-            image = cv2.resize(image,(80,60))
             image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+            image = cv2.resize(image,cfg_cam_res)
+            # vidfile.write(image)
             image = np.expand_dims(image,2)
             # print(image.shape)
             image=np.subtract(image,127.5)
@@ -238,6 +244,7 @@ for i in range(2,10):
             image = np.add(image,epsilon)
             # print(image)
             images.append(image)
+    # sys.exit()
 X_train = np.asarray(images)
 
 

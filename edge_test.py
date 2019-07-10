@@ -21,7 +21,7 @@ def auto_canny(image, sigma=0.33):
 for i in [2]:
     print(i)
     fourcc = cv2.VideoWriter_fourcc(*'XVID')
-    vidfile = cv2.VideoWriter("models/edge"+str(i)+".avi", fourcc, cfg_cam_fps, cfg_cam_res,0)
+    vidfile = cv2.VideoWriter("models/1edge"+str(i)+".avi", fourcc, cfg_cam_fps, cfg_cam_res,0)
     vidcap = cv2.VideoCapture("output" + str(i) + ".avi")
     success = True
     while success:
