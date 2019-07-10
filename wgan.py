@@ -44,7 +44,7 @@ except ImportError:
           'Please install it (e.g. with pip install pillow)')
     exit()
 
-BATCH_SIZE = 64
+BATCH_SIZE = 500
 # The training ratio is the number of discriminator updates
 # per generator update. The paper uses 5.
 TRAINING_RATIO = 5
@@ -338,16 +338,16 @@ negative_y = -positive_y
 dummy_y = np.zeros((BATCH_SIZE, 1), dtype=np.float32)
 
 for epoch in range(10000):
-    train = sample(X_train.tolist(),5000)
-    train = np.asarray(train)
-    # np.random.shuffle(X_train)
+    # train = sample(X_train.tolist(),5000)
+    # train = np.asarray(train)
+    np.random.shuffle(X_train)
     print("Epoch: ", epoch)
-    print("Number of batches: ", int(train.shape[0] // BATCH_SIZE))
+    print("Number of batches: ", int(X_train.shape[0] // BATCH_SIZE))
     discriminator_loss = []
     generator_loss = []
     minibatches_size = BATCH_SIZE * TRAINING_RATIO
-    for i in range(int(train.shape[0] // (BATCH_SIZE * TRAINING_RATIO))):
-        discriminator_minibatches = train[i * minibatches_size:
+    for i in range(int(X_train.shape[0] // (BATCH_SIZE * TRAINING_RATIO))):
+        discriminator_minibatches = X_train[i * minibatches_size:
                                             (i + 1) * minibatches_size]
         for j in range(TRAINING_RATIO):
             image_batch = discriminator_minibatches[j * BATCH_SIZE:
