@@ -336,10 +336,16 @@ discriminator_model.compile(optimizer=Adam(0.0001, beta_1=0.5, beta_2=0.9),
 positive_y = np.ones((BATCH_SIZE, 1), dtype=np.float32)
 negative_y = -positive_y
 dummy_y = np.zeros((BATCH_SIZE, 1), dtype=np.float32)
-
+ids = []
+for i in range(5000):
+    ids.append(i)
+def get_data(ids,data):
+    d = []
+    for i in ids:
+        d.append(data[i])
+    return np.asarray(d)
 for epoch in range(10000):
-    train = sample(X_train.tolist(),5000)
-    train = np.asarray(train)
+    train = get_data(sample(ids,5000),images)
     # np.random.shuffle(X_train)
     print("Epoch: ", epoch)
     print("Number of batches: ", int(5000 // BATCH_SIZE))
