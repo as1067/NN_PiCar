@@ -56,9 +56,9 @@ y = np.asarray(y)
 batch_size = 50
 dropout = .4
 model = Sequential()
-model.add(l.Conv2D(256,activation="relu",kernel_size=(3,3),input_shape=(60,80,1),data_format="channels_last"))
-model.add(l.Conv2D(128,activation="relu",kernel_size=(3,3),data_format="channels_last"))
+model.add(l.Conv2D(128,activation="relu",kernel_size=(3,3),input_shape=(60,80,1),data_format="channels_last"))
 model.add(l.Conv2D(64,activation="relu",kernel_size=(3,3),data_format="channels_last"))
+model.add(l.Conv2D(32,activation="relu",kernel_size=(3,3),data_format="channels_last"))
 model.add(l.Flatten())
 # model.add(l.Reshape((60,80)))
 # model.add(l.SimpleRNN(100,activation="relu",dropout=dropout,recurrent_dropout=dropout))
