@@ -338,7 +338,7 @@ negative_y = -positive_y
 dummy_y = np.zeros((BATCH_SIZE, 1), dtype=np.float32)
 
 for epoch in range(10000):
-    train = sample(X_train,5000)
+    train = sample(X_train.tolist(),5000)
     train = np.asarray(train)
     # np.random.shuffle(X_train)
     print("Epoch: ", epoch)
