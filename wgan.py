@@ -44,7 +44,7 @@ except ImportError:
           'Please install it (e.g. with pip install pillow)')
     exit()
 
-BATCH_SIZE = 100
+BATCH_SIZE = 64
 # The training ratio is the number of discriminator updates
 # per generator update. The paper uses 5.
 TRAINING_RATIO = 5
