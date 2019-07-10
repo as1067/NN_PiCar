@@ -35,6 +35,7 @@ from keras.datasets import mnist
 from keras import backend as K
 from functools import partial
 import cv2
+from random import sample
 image_data_format = "channels_last"
 try:
     from PIL import Image
@@ -337,14 +338,16 @@ negative_y = -positive_y
 dummy_y = np.zeros((BATCH_SIZE, 1), dtype=np.float32)
 
 for epoch in range(10000):
-    np.random.shuffle(X_train)
+    train = sample(X_train,5000)
+    train = np.asarray(train)
+    # np.random.shuffle(X_train)
     print("Epoch: ", epoch)
-    print("Number of batches: ", int(X_train.shape[0] // BATCH_SIZE))
+    print("Number of batches: ", int(train.shape[0] // BATCH_SIZE))
     discriminator_loss = []
     generator_loss = []
     minibatches_size = BATCH_SIZE * TRAINING_RATIO
-    for i in range(int(X_train.shape[0] // (BATCH_SIZE * TRAINING_RATIO))):
-        discriminator_minibatches = X_train[i * minibatches_size:
+    for i in range(int(train.shape[0] // (BATCH_SIZE * TRAINING_RATIO))):
+        discriminator_minibatches = train[i * minibatches_size:
                                             (i + 1) * minibatches_size]
         for j in range(TRAINING_RATIO):
             image_batch = discriminator_minibatches[j * BATCH_SIZE:
