@@ -338,16 +338,16 @@ negative_y = -positive_y
 dummy_y = np.zeros((BATCH_SIZE, 1), dtype=np.float32)
 
 for epoch in range(10000):
-    # train = sample(X_train.tolist(),5000)
-    # train = np.asarray(train)
-    np.random.shuffle(X_train)
+    train = sample(X_train.tolist(),5000)
+    train = np.asarray(train)
+    # np.random.shuffle(X_train)
     print("Epoch: ", epoch)
-    print("Number of batches: ", int(X_train.shape[0] // BATCH_SIZE))
+    print("Number of batches: ", int(5000 // BATCH_SIZE))
     discriminator_loss = []
     generator_loss = []
     minibatches_size = BATCH_SIZE * TRAINING_RATIO
-    for i in range(int(X_train.shape[0] // (BATCH_SIZE * TRAINING_RATIO))):
-        discriminator_minibatches = X_train[i * minibatches_size:
+    for i in range(int(5000 // (BATCH_SIZE * TRAINING_RATIO))):
+        discriminator_minibatches = train[i * minibatches_size:
                                             (i + 1) * minibatches_size]
         for j in range(TRAINING_RATIO):
             image_batch = discriminator_minibatches[j * BATCH_SIZE:
@@ -364,5 +364,5 @@ for epoch in range(10000):
     # progress bars, etc.
     generate_images(generator, args.output_dir, epoch)
     if epoch%100==0:
-        generator_model.save("models/GAN_G"+str(epoch)+".h5")
-        discriminator_model.save("models/GAN_D"+str(epoch)+".h5")
+        generator_model.save("models/1GAN_G"+str(epoch)+".h5")
+        discriminator_model.save("models/1GAN_D"+str(epoch)+".h5")
