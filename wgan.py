@@ -369,6 +369,6 @@ for epoch in range(10000):
     # Still needs some code to display losses from the generator and discriminator,
     # progress bars, etc.
     generate_images(generator, args.output_dir, epoch)
-    if epoch%100==0:
-        generator_model.save("models/1GAN_G"+str(epoch)+".h5")
-        discriminator_model.save("models/1GAN_D"+str(epoch)+".h5")
+    # if epoch%100==0:
+    #     generator_model.save("models/1GAN_G"+str(epoch)+".h5")
+    #     discriminator_model.save("models/1GAN_D"+str(epoch)+".h5")
