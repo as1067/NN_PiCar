@@ -78,6 +78,6 @@ model.compile(optimizer=Adam(),loss="mean_squared_error")
 #Neural Network Training
 print("starting training")
 model.fit(x,y,batch_size=batch_size,epochs=20,validation_split=.3)
-model.save("checkpoint/model_11.h5")
+model.save("checkpoint/model_10.h5")
 
 

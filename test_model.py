@@ -3,7 +3,7 @@ import numpy as np
 import csv
 import keras
 import time
-i = 2
+i = 7
 j = 10
 steering = []
 vidcap = cv2.VideoCapture("models/edge" + str(i) + ".avi")

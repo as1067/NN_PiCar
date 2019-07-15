@@ -17,8 +17,6 @@ def auto_canny(image, sigma=0.33):
     edged = cv2.Canny(image, lower, upper,apertureSize=3)
     return edged
 
-    # return the edged image
-    return edged
 for i in range(2,10):
     print(i)
     fourcc = cv2.VideoWriter_fourcc(*'XVID')
