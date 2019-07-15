@@ -51,6 +51,7 @@ for i in ids:
     y.append(steering[i])
 x = np.asarray(x)
 y = np.asarray(y)
+y = np.divide(y,200)
 
 #Neural Network Setup
 batch_size = 50
@@ -62,13 +63,13 @@ model.add(l.Conv2D(128,activation="relu",kernel_size=(3,3),data_format="channels
 model.add(l.Flatten())
 # model.add(l.Reshape((60,80)))
 # model.add(l.SimpleRNN(100,activation="relu",dropout=dropout,recurrent_dropout=dropout))
-model.add(l.Dense(200,activation="relu"))
+model.add(l.Dense(200,activation="sigmoid"))
 model.add(l.Dropout(dropout))
 model.add(l.BatchNormalization())
-model.add(l.Dense(100,activation="relu"))
+model.add(l.Dense(100,activation="sigmoid"))
 model.add(l.Dropout(dropout))
 model.add(l.BatchNormalization())
-model.add(l.Dense(50,activation="relu"))
+model.add(l.Dense(50,activation="sigmoid"))
 model.add(l.Dropout(dropout))
 model.add(l.BatchNormalization())
 model.add(l.Dense(1,activation="relu"))
@@ -78,6 +79,6 @@ model.compile(optimizer=Adam(),loss="mean_squared_error")
 #Neural Network Training
 print("starting training")
 model.fit(x,y,batch_size=batch_size,epochs=20,validation_split=.3)
-model.save("checkpoint/model_10.h5")
+model.save("checkpoint/model_11.h5")
 
 
