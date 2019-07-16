@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="725db2f6-c724-4837-8332-36000ca5e841" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/train_keras.py" beforeDir="false" afterPath="$PROJECT_DIR$/train_keras.py" afterDir="false" />
-    </list>
+    <list default="true" id="725db2f6-c724-4837-8332-36000ca5e841" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -356,12 +354,12 @@
       <workItem from="1562637690662" duration="2836000" />
       <workItem from="1562643877556" duration="12820000" />
       <workItem from="1562707426121" duration="10928000" />
-      <workItem from="1563229837755" duration="3927000" />
+      <workItem from="1563229837755" duration="4084000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32171000" />
+    <option name="totallyTimeSpent" value="32328000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="834" extended-state="6" />
