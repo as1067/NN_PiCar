@@ -2,7 +2,7 @@ import numpy as np
 import argparse
 import glob
 import cv2
-cfg_cam_res = (320, 240)
+cfg_cam_res = (80, 60)
 cfg_cam_fps = 30
 # from scipy import ndimage as ndi
 # from skimage import feature
@@ -26,6 +26,7 @@ for i in range(2,10):
     while success:
         success, image = vidcap.read()
         if success:
+            image = cv2.resize(image,(80,60))
             e = auto_canny(image)
             # print(e.shape)
             vidfile.write(e)
