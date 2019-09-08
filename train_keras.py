@@ -41,7 +41,7 @@ steering = np.asarray(steering)
 ids = []
 for i in range(images.shape[0]):
     ids.append(i)
-ids = sample(ids,images.shape[0])
+ids = sample(ids,10000)
 # print(ids)
 # sys.exit()
 x = []
@@ -57,19 +57,11 @@ y = np.divide(y,200)
 batch_size = 50
 dropout = .4
 model = Sequential()
-model.add(l.Conv2D(128,activation="sigmoid",kernel_size=(3,3),input_shape=(60,80,1),data_format="channels_last"))
-model.add(l.Conv2D(128,activation="sigmoid",kernel_size=(3,3),data_format="channels_last"))
-model.add(l.Conv2D(128,activation="sigmoid",kernel_size=(3,3),data_format="channels_last"))
+model.add(l.Conv2D(10,activation="relu",kernel_size=(3,3),input_shape=(60,80,1),data_format="channels_last"))
 model.add(l.Flatten())
 # model.add(l.Reshape((60,80)))
 # model.add(l.SimpleRNN(100,activation="relu",dropout=dropout,recurrent_dropout=dropout))
-model.add(l.Dense(200,activation="sigmoid"))
-model.add(l.Dropout(dropout))
-model.add(l.BatchNormalization())
-model.add(l.Dense(100,activation="sigmoid"))
-model.add(l.Dropout(dropout))
-model.add(l.BatchNormalization())
-model.add(l.Dense(50,activation="sigmoid"))
+model.add(l.Dense(50,activation="relu"))
 model.add(l.Dropout(dropout))
 model.add(l.BatchNormalization())
 model.add(l.Dense(1,activation="relu"))
@@ -79,6 +71,6 @@ model.compile(optimizer=Adam(),loss="mean_squared_error")
 #Neural Network Training
 print("starting training")
 model.fit(x,y,batch_size=batch_size,epochs=5,validation_split=.3)
-model.save("checkpoint/model_11.h5")
+model.save("checkpoint/model_12.h5")
 
 
